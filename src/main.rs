@@ -9,7 +9,7 @@ async fn hello() -> impl Responder {
 
 #[post("/hello")]
 async fn hello_post() -> impl Responder {
-    HttpResponse::MethodNotAllowed().finish()
+    HttpResponse::MethodNotAllowed().body("Method Not Allowed")
 }
 
 #[post("/hello/{name}")]
@@ -19,7 +19,7 @@ async fn hello_name(info: web::Path<NameInfo>) -> impl Responder {
 
 #[get("/hello/{name}")]
 async fn hello_name_get() -> impl Responder {
-    HttpResponse::MethodNotAllowed().finish()
+    HttpResponse::MethodNotAllowed().body("Method Not Allowed")
 }
 
 #[get("/test")]
@@ -31,7 +31,7 @@ async fn test() -> impl Responder {
 async fn test_post(web::Query(info): web::Query<MsgQuery>) -> impl Responder {
     match info.msg {
         Some(msg) => HttpResponse::Ok().json(json!({"message": msg})),
-        None => HttpResponse::BadRequest().finish(),
+        None => HttpResponse::BadRequest().body("Bad Request"),
     }
 }
 

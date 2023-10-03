@@ -1,4 +1,4 @@
-Temporary. Do not submit this.
+Temporary. Do not submit.
 
 # CSE138_Assignment1_temp_rust
 
